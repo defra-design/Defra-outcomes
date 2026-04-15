@@ -1,6 +1,5 @@
 {
   "serviceName": "Defra Outcomes Framework",
-  "useAuth": false,
   "useHttps": false,
   "useServiceNavigation": true,
   "plugins": {

@@ -22,11 +22,11 @@ The kit is a **Node web app** (not static hosting). On [Render](https://render.c
 
 1. **Build command:** `npm ci` (or `npm install` if you prefer). Avoid mixing **Yarn** with `package-lock.json` — Render may default to Yarn if no lockfile is detected; this repo includes `package-lock.json`, so npm is the right choice.
 2. **Start command:** `npm start` (runs `govuk-prototype-kit start`, same as production serve).
-3. **Defaults in this repo (`app/config.json`):** `useAuth` and `useHttps` are set to **`false`** so the site is **reachable without a kit password** and **without HTTPS redirect loops** behind Render’s proxy (logs like `Password is not set` and `Redirecting request to https` should stop after redeploy). This suits a **public accessibility demo**; do not use that pattern for sensitive prototypes.
+3. **Environment variables** in the Render dashboard (**Environment** tab):
+   - **`PASSWORD`** — **Required** in production. Set a strong secret and share it with people who should open the prototype ([kit publishing](https://prototype-kit.service.gov.uk/docs/publishing-on-the-web)). Without this you see “Password not set.”
+   - **`USE_HTTPS`** = `false` — Recommended on Render so the app does not force HTTPS inside the container (TLS is already terminated at Render’s edge). You can set this in the dashboard *or* rely on `"useHttps": false` in `app/config.json` (this repo sets that by default).
 
-To **protect** the deploy with a password instead: remove `useAuth` / set `"useAuth": true`, set environment variable **`PASSWORD`** on Render, and typically set **`USE_HTTPS=false`** there as well (or rely on config). See [kit publishing](https://prototype-kit.service.gov.uk/docs/publishing-on-the-web).
-
-Optional: use the included `render.yaml` as a Blueprint or copy its `buildCommand` / `envVars` into an existing service.
+Optional: use the included `render.yaml` as a Blueprint or copy its settings into an existing service. Do **not** commit `PASSWORD` to git—add it only in Render.
 
 ## Licence
 

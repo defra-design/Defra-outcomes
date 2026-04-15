@@ -1,6 +1,10 @@
 # Render Blueprint — https://render.com/docs/blueprint-spec
-# Auth: app/config.json sets useAuth false for a public demo. For password protection,
-# set USE_AUTH=true and PASSWORD in the Render dashboard (and useAuth true in config).
+#
+# Add these in the Render dashboard (Environment):
+#   PASSWORD=<strong secret>   — required for the kit in production (never commit it)
+#
+# Optional in dashboard if you remove useHttps from app/config.json:
+#   USE_HTTPS=false
 
 services:
   - type: web
@@ -11,3 +15,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: USE_HTTPS
+        value: "false"
