@@ -46,3 +46,12 @@ router.get('/outcomes', (req, res) => {
     resilienceOutcomeCount: resilienceOutcomes.length
   })
 })
+
+router.get('/outcomes-static', (req, res) => {
+  res.render('outcomes/static.html', {
+    outcomes: outcomesData,
+    priorities: outcomesData.sosSection.secretaryOfStatePriorities,
+    resilienceOutcomes: outcomesData.resilienceSection.outcomes,
+    resilienceOutcomeCount: outcomesData.resilienceSection.outcomes.length
+  })
+})

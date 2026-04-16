@@ -1,0 +1,81 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Outcomes framework (static)" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-xl">{{ outcomes.frameworkTitle }}</h1>
+
+    <p class="govuk-body">{{ outcomes.sourceNote }}</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-7">
+      Prefer expandable sections?
+      <a class="govuk-link" href="/outcomes">View the accordion version</a>.
+    </p>
+
+    <section class="defra-vision-panel govuk-!-margin-bottom-8" aria-labelledby="defra-vision-heading">
+      <p class="govuk-caption-m govuk-!-margin-bottom-1">Defra vision</p>
+      <h2 class="govuk-heading-l" id="defra-vision-heading">{{ outcomes.vision.headline }}</h2>
+      <p class="govuk-body">{{ outcomes.vision.description }}</p>
+    </section>
+
+    <section class="govuk-!-margin-bottom-8" aria-labelledby="sos-priorities-heading">
+      <p class="govuk-caption-m govuk-!-margin-bottom-1">{{ outcomes.sosSection.tierLabel }}</p>
+      <h2 class="govuk-heading-l" id="sos-priorities-heading">{{ outcomes.sosSection.title }}</h2>
+      <p class="govuk-body-l">{{ outcomes.sosSection.intro }}</p>
+
+      {% for priority in priorities %}
+        <section class="govuk-!-margin-top-6" aria-labelledby="priority-{{ priority.id }}">
+          <h3 class="govuk-heading-m" id="priority-{{ priority.id }}">{{ priority.pillarIndex }}. {{ priority.title }}</h3>
+          <p class="govuk-body-s govuk-!-margin-bottom-3">{{ priority.pillarShortLabel }} · {{ priority.outcomes | length }} outcomes</p>
+
+          <div class="defra-pillar-panel defra-pillar-panel--{{ priority.pillarIndex }}">
+            {% for outcome in priority.outcomes %}
+              <article class="defra-outcome-block {% if not loop.first %}govuk-!-padding-top-4 govuk-!-margin-top-4 defra-outcome-block--divider{% endif %}">
+                <h4 class="govuk-heading-s govuk-!-margin-bottom-2">{{ outcome.text }}</h4>
+                {% include "outcomes/partials/outcome-owners.html" %}
+
+                {% if outcome.eip %}
+                  <p class="govuk-body govuk-body-s govuk-!-margin-bottom-0 defra-eip-note">
+                    <span class="govuk-tag govuk-!-margin-right-2">EIP</span>
+                    {{ outcomes.eipNoteText }}
+                  </p>
+                {% endif %}
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </section>
+
+    <section class="defra-resilience-panel govuk-!-margin-bottom-8" aria-labelledby="resilience-heading">
+      <p class="govuk-caption-m govuk-!-margin-bottom-1">{{ outcomes.resilienceSection.tierLabel }}</p>
+      <h2 class="govuk-heading-l" id="resilience-heading">{{ outcomes.resilienceSection.title }}</h2>
+      <p class="govuk-body-l">{{ outcomes.resilienceSection.intro }}</p>
+      <p class="govuk-body govuk-!-margin-top-4">There are {{ resilienceOutcomeCount }} outcomes in this tier.</p>
+
+      {% for outcome in resilienceOutcomes %}
+        <article class="defra-pillar-panel defra-pillar-panel--resilience {% if not loop.first %}govuk-!-padding-top-4 govuk-!-margin-top-4 defra-outcome-block--divider{% endif %}">
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-2">{{ loop.index }}. {{ outcome.text }}</h3>
+          {% include "outcomes/partials/outcome-owners.html" %}
+          {% if outcome.eip %}
+            <p class="govuk-body govuk-body-s govuk-!-margin-bottom-0 defra-eip-note">
+              <span class="govuk-tag govuk-!-margin-right-2">EIP</span>
+              {{ outcomes.eipNoteText }}
+            </p>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </section>
+
+    <p class="govuk-body govuk-!-margin-top-8">
+      <a class="govuk-link" href="/">Back to start</a>
+    </p>
+
+  </div>
+</div>
+
+{% endblock %}
