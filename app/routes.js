@@ -9,6 +9,11 @@ const router = govukPrototypeKit.requests.setupRouter()
 const outcomesData = require('./data/outcomes.json')
 const outcomesTableData = require('./data/outcomes-table.json')
 
+router.use((req, res, next) => {
+  res.locals.currentPath = req.path
+  next()
+})
+
 router.get('/outcomes', (req, res) => {
   const env = req.app.get('nunjucksEnv')
   const priorities = outcomesData.sosSection.secretaryOfStatePriorities

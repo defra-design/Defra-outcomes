@@ -13,10 +13,18 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       </div>
     </div>
     <nav class="defra-site-header__nav-bar" aria-label="Primary navigation">
-      <div class="govuk-width-container defra-site-header__nav">
-        <a class="defra-site-header__nav-link" href="/outcomes">Accordion</a>
-        <a class="defra-site-header__nav-link" href="/outcomes-static">Static</a>
-        <a class="defra-site-header__nav-link" href="/outcomes-table">Table</a>
+      <div class="govuk-width-container">
+        <ul class="defra-site-header__nav">
+          <li class="defra-site-header__nav-item">
+            <a class="defra-site-header__nav-link{% if currentPath == '/outcomes' %} defra-site-header__nav-link--current{% endif %}" href="/outcomes"{% if currentPath == '/outcomes' %} aria-current="page"{% endif %}>Accordion</a>
+          </li>
+          <li class="defra-site-header__nav-item">
+            <a class="defra-site-header__nav-link{% if currentPath == '/outcomes-static' %} defra-site-header__nav-link--current{% endif %}" href="/outcomes-static"{% if currentPath == '/outcomes-static' %} aria-current="page"{% endif %}>Static</a>
+          </li>
+          <li class="defra-site-header__nav-item">
+            <a class="defra-site-header__nav-link{% if currentPath == '/outcomes-table' %} defra-site-header__nav-link--current{% endif %}" href="/outcomes-table"{% if currentPath == '/outcomes-table' %} aria-current="page"{% endif %}>Table</a>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>

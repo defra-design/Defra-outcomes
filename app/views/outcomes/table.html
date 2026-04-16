@@ -7,18 +7,20 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h1 class="govuk-heading-xl">Defra Outcomes Framework: table view</h1>
-    {{ govukTable({
-      classes: "govuk-!-font-size-16",
-      firstCellIsHeader: false,
-      head: [
-        { text: tableData.columns[0] },
-        { text: tableData.columns[1] },
-        { text: tableData.columns[2] },
-        { text: tableData.columns[3] },
-        { text: tableData.columns[4] }
-      ],
-      rows: tableRows
-    }) }}
+    <div class="defra-table-wrapper">
+      {{ govukTable({
+        classes: "govuk-!-font-size-16",
+        firstCellIsHeader: false,
+        head: [
+          { text: tableData.columns[0] },
+          { text: tableData.columns[1] },
+          { text: tableData.columns[2] },
+          { text: tableData.columns[3] },
+          { text: tableData.columns[4] }
+        ],
+        rows: tableRows
+      }) }}
+    </div>
 
   </div>
 </div>

@@ -22,12 +22,12 @@ $defra-green-dark: #008938;
 }
 
 .defra-site-header__brand-container {
-  padding: 16px 0 12px;
+  padding: 24px 0 22px;
 }
 
 .defra-site-header__brand-link {
-  font-size: 2rem;
-  line-height: 1.1;
+  font-size: 1.25rem;
+  line-height: 1.15;
   font-weight: 700;
   text-decoration: none;
 
@@ -53,14 +53,31 @@ $defra-green-dark: #008938;
 
 .defra-site-header__nav {
   display: flex;
-  gap: 22px;
+  align-items: stretch;
+  gap: 0;
   flex-wrap: wrap;
-  padding: 8px 0 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.defra-site-header__nav-item {
+  display: flex;
+}
+
+.defra-site-header__nav-item:first-child .defra-site-header__nav-link {
+  padding-left: 0;
 }
 
 .defra-site-header__nav-link {
-  font-size: 1.1875rem;
-  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 38px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+  font-weight: 400;
   text-decoration: none;
 
   &:link,
@@ -70,13 +87,47 @@ $defra-green-dark: #008938;
 
   &:hover {
     color: #ffffff;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.18);
   }
 
   &:focus {
+    background: #ffdd00;
     color: #0b0c0c;
+    box-shadow: none;
+    outline: 3px solid #0b0c0c;
+    outline-offset: -3px;
   }
+}
+
+.defra-site-header__nav-link--current {
+  font-weight: 700;
+}
+
+.defra-site-header__nav-link--current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  background: #6fba26;
+}
+
+@media (max-width: 40.0525em) {
+  .defra-site-header__brand-link {
+    font-size: 1.2rem;
+  }
+
+  .defra-site-header__nav-link {
+    min-height: 40px;
+    padding: 0 16px;
+    font-size: 0.95rem;
+  }
+}
+
+.defra-table-wrapper {
+  overflow-x: auto;
 }
 
 .defra-vision-panel {
