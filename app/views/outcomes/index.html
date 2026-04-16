@@ -1,17 +1,15 @@
 {% extends "layouts/main.html" %}
 {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
-{% set pageName = "Outcomes framework" %}
+{% set pageName = "Outcomes framework - accordion view" %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-xl">{{ outcomes.frameworkTitle }}</h1>
+    <h1 class="govuk-heading-xl">{{ outcomes.frameworkTitle }}: accordion view</h1>
 
-    {% set currentView = "accordion" %}
-    {% include "outcomes/partials/view-nav.html" %}
     <section class="defra-vision-panel govuk-!-margin-bottom-8" aria-labelledby="defra-vision-heading">
       <p class="govuk-caption-m govuk-!-margin-bottom-1">Defra vision</p>
       <h2 class="govuk-heading-l" id="defra-vision-heading">{{ outcomes.vision.headline }}</h2>

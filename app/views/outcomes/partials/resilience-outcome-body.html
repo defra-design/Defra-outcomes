@@ -2,8 +2,8 @@
   {% include "outcomes/partials/outcome-owners.html" %}
   {% if outcome.eip %}
     <p class="govuk-body govuk-body-s govuk-!-margin-bottom-0 {% if outcome.owner or outcome.owners %}govuk-!-margin-top-2{% endif %} defra-eip-note">
-      <span class="govuk-tag govuk-!-margin-right-2">EIP</span>
-      {{ eipNoteText }}
+      <span class="govuk-tag defra-eip-note__tag">EIP</span>
+      <span class="defra-eip-note__text">{{ eipNoteText }}</span>
     </p>
   {% endif %}
 </div>

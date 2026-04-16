@@ -3,4 +3,21 @@ For guidance on how to use layouts see:
 https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 #}
 
-{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+{% extends "govuk-prototype-kit/layouts/unbranded.njk" %}
+
+{% block header %}
+  <header class="defra-site-header" role="banner">
+    <div class="defra-site-header__brand-bar">
+      <div class="govuk-width-container defra-site-header__brand-container">
+        <a class="defra-site-header__brand-link" href="/" aria-label="Defra Outcomes Framework home">Defra Outcomes Framework</a>
+      </div>
+    </div>
+    <nav class="defra-site-header__nav-bar" aria-label="Primary navigation">
+      <div class="govuk-width-container defra-site-header__nav">
+        <a class="defra-site-header__nav-link" href="/outcomes">Accordion</a>
+        <a class="defra-site-header__nav-link" href="/outcomes-static">Static</a>
+        <a class="defra-site-header__nav-link" href="/outcomes-table">Table</a>
+      </div>
+    </nav>
+  </header>
+{% endblock %}

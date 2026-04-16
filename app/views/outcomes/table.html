@@ -1,14 +1,12 @@
 {% extends "layouts/main.html" %}
 {% from "govuk/components/table/macro.njk" import govukTable %}
 
-{% set pageName = "Outcomes framework (table)" %}
+{% set pageName = "Outcomes framework - table view" %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    <h1 class="govuk-heading-xl">{{ tableData.title }}</h1>
-    {% set currentView = "table" %}
-    {% include "outcomes/partials/view-nav.html" %}
+    <h1 class="govuk-heading-xl">Defra Outcomes Framework: table view</h1>
     {{ govukTable({
       classes: "govuk-!-font-size-16",
       firstCellIsHeader: false,

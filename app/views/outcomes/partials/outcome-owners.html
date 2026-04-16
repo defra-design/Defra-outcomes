@@ -1,25 +1,19 @@
 {% if outcome.owner %}
-  <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-2 defra-outcome-owner-block">
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key govuk-!-width-one-third">Outcome owner</dt>
-      <dd class="govuk-summary-list__value">
-        <span class="govuk-!-font-weight-bold">{{ outcome.owner.name }}</span><br>
-        {{ outcome.owner.role }}
-      </dd>
-    </div>
-  </dl>
+  <div class="defra-outcome-owner-block govuk-!-margin-bottom-2">
+    <p class="defra-outcome-owner-block__label govuk-!-margin-bottom-1">Outcome owner</p>
+    <p class="defra-outcome-owner-block__person govuk-!-margin-bottom-0">
+      <span class="govuk-!-font-weight-bold">{{ outcome.owner.name }}</span><br>
+      {{ outcome.owner.role }}
+    </p>
+  </div>
 {% elif outcome.owners and (outcome.owners | length) > 0 %}
-  <dl class="govuk-summary-list govuk-summary-list--no-border govuk-!-margin-bottom-2 defra-outcome-owner-block">
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key govuk-!-width-one-third">Outcome owners</dt>
-      <dd class="govuk-summary-list__value">
-        {% for o in outcome.owners %}
-          <p class="govuk-body-s govuk-!-margin-bottom-2 {% if loop.last %}govuk-!-margin-bottom-0{% endif %}">
-            <span class="govuk-!-font-weight-bold">{{ o.name }}</span><br>
-            {{ o.role }}
-          </p>
-        {% endfor %}
-      </dd>
-    </div>
-  </dl>
+  <div class="defra-outcome-owner-block govuk-!-margin-bottom-2">
+    <p class="defra-outcome-owner-block__label govuk-!-margin-bottom-1">Outcome owners</p>
+    {% for o in outcome.owners %}
+      <p class="defra-outcome-owner-block__person govuk-!-margin-bottom-2 {% if loop.last %}govuk-!-margin-bottom-0{% endif %}">
+        <span class="govuk-!-font-weight-bold">{{ o.name }}</span><br>
+        {{ o.role }}
+      </p>
+    {% endfor %}
+  </div>
 {% endif %}

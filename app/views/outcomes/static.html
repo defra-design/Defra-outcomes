@@ -1,16 +1,13 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Outcomes framework (static)" %}
+{% set pageName = "Outcomes framework - static view" %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-xl">{{ outcomes.frameworkTitle }}</h1>
-
-    {% set currentView = "static" %}
-    {% include "outcomes/partials/view-nav.html" %}
+    <h1 class="govuk-heading-xl">{{ outcomes.frameworkTitle }}: static view</h1>
 
     <section class="defra-vision-panel govuk-!-margin-bottom-8" aria-labelledby="defra-vision-heading">
       <p class="govuk-caption-m govuk-!-margin-bottom-1">Defra vision</p>

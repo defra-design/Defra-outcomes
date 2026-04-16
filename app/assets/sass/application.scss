@@ -6,10 +6,78 @@
 // Defra outcomes hierarchy (visual echo of the infographic — semantic structure is in HTML)
 // GDS colour refs: https://design-system.service.gov.uk/styles/colour/
 
-$defra-green: #00703c;
+$defra-green: #00a33b;
 $defra-light-grey: #f3f2f1;
 $defra-border: #b1b4b6;
 $defra-pillar-pink: #d53880;
+$defra-green-dark: #008938;
+
+// Custom Defra header and nav (no GOV.UK crown branding)
+.defra-site-header {
+  color: #ffffff;
+}
+
+.defra-site-header__brand-bar {
+  background: $defra-green;
+}
+
+.defra-site-header__brand-container {
+  padding: 16px 0 12px;
+}
+
+.defra-site-header__brand-link {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: #ffffff;
+  }
+
+  &:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  &:focus {
+    color: #0b0c0c;
+  }
+}
+
+.defra-site-header__nav-bar {
+  background: $defra-green-dark;
+}
+
+.defra-site-header__nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 8px 0 9px;
+}
+
+.defra-site-header__nav-link {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: #ffffff;
+  }
+
+  &:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  &:focus {
+    color: #0b0c0c;
+  }
+}
 
 .defra-vision-panel {
   padding: 20px 25px;
@@ -53,7 +121,20 @@ $defra-pillar-pink: #d53880;
 }
 
 .defra-eip-note {
-  max-width: 40rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: 52rem;
+}
+
+.defra-eip-note__tag {
+  flex: 0 0 auto;
+  margin-right: 0;
+}
+
+.defra-eip-note__text {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .defra-accordion-sos {
@@ -87,13 +168,16 @@ $defra-pillar-pink: #d53880;
 
 // Owner lines sit below the outcome title — keep clearly smaller than h4 / accordion headings
 .defra-outcome-owner-block {
-  .govuk-summary-list__key {
-    font-size: 0.875rem;
-    line-height: 1.25;
-  }
+  text-align: left;
+}
 
-  .govuk-summary-list__value {
-    font-size: 1rem;
-    line-height: 1.25;
-  }
+.defra-outcome-owner-block__label {
+  font-size: 0.95rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.defra-outcome-owner-block__person {
+  font-size: 1.1875rem;
+  line-height: 1.25;
 }
