@@ -2,9 +2,12 @@
 
 This repository demonstrates that **an accessible version of the Defra Outcomes Framework**—proper headings, lists, expandable sections, and outcome owners in plain text—is **straightforward to publish** using the [GOV.UK Prototype Kit](https://prototype-kit.service.gov.uk/) and structured content. It contrasts with flipbook or image-heavy formats that are harder to use with assistive technology, search, and reflow.
 
+It is also an **experiment** in how quickly a tool like **Cursor** can create a more accessible version of a policy-style document from **minimal prompts**.
+
 ## What’s here
 
-- **`/outcomes`** — readable page built from `app/data/outcomes.json` (owners, EIP notes, SoS pillars, resilience outcomes).
+- **`/outcomes`** — readable accordion page built from `app/data/outcomes.json` (owners, EIP notes, SoS pillars, resilience outcomes).
+- **`/outcomes-static`** — non-accordion, hierarchy-first version for linear reading.
 - **`content/`** — Markdown reference extracts and an **infographic** screenshot for visual hierarchy (`content/reference/defra-outcomes-framework-infographic.png`).
 
 ## Run locally
@@ -16,17 +19,17 @@ npm run dev
 
 Open [http://localhost:3000/outcomes](http://localhost:3000/outcomes).
 
-## Deploy on Render
+## Deploy on Heroku
 
-The kit is a **Node web app** (not static hosting). On [Render](https://render.com), use a **Web Service** wired to this repo.
+The kit is a **Node web app** (not static hosting). Deploy it as a standard Heroku web app.
 
-1. **Build command:** `npm ci` (or `npm install` if you prefer). Avoid mixing **Yarn** with `package-lock.json` — Render may default to Yarn if no lockfile is detected; this repo includes `package-lock.json`, so npm is the right choice.
+1. **Build command:** `npm ci` (or `npm install` if preferred).
 2. **Start command:** `npm start` (runs `govuk-prototype-kit start`, same as production serve).
-3. **Environment variables** in the Render dashboard (**Environment** tab):
-   - **`PASSWORD`** — **Required** in production. Set a strong secret and share it with people who should open the prototype ([kit publishing](https://prototype-kit.service.gov.uk/docs/publishing-on-the-web)). Without this you see “Password not set.”
-   - **`USE_HTTPS`** = `false` — Recommended on Render so the app does not force HTTPS inside the container (TLS is already terminated at Render’s edge). You can set this in the dashboard *or* rely on `"useHttps": false` in `app/config.json` (this repo sets that by default).
+3. **Config vars** in Heroku:
+   - **`PASSWORD`** — **Required** in production. Set a strong secret and share it only with people who should open the prototype ([kit publishing guidance](https://prototype-kit.service.gov.uk/docs/publishing-on-the-web)).
+   - **`USE_HTTPS`** = `false` — recommended if you see redirect-loop or proxy-related HTTPS issues.
 
-Configure the service **only in the Render dashboard** (do not rely on a committed `render.yaml` for secrets—Blueprint sync can overwrite or conflict with dashboard env vars). Do **not** commit `PASSWORD` to git.
+Do **not** commit `PASSWORD` (or any secrets) to git.
 
 ## Licence
 
