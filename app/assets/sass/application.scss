@@ -130,6 +130,17 @@ $defra-green-dark: #008938;
   overflow-x: auto;
 }
 
+.defra-html-copy-frame-wrap {
+  border: 1px solid #b1b4b6;
+}
+
+.defra-html-copy-frame {
+  width: 100%;
+  min-height: 60vh;
+  border: 0;
+  overflow: hidden;
+}
+
 .defra-vision-panel {
   padding: 20px 25px;
   border-left: 5px solid $defra-green;

@@ -5,6 +5,7 @@
 
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
+const path = require('node:path')
 
 const outcomesData = require('./data/outcomes.json')
 const outcomesTableData = require('./data/outcomes-table.json')
@@ -75,4 +76,17 @@ router.get('/outcomes-table', (req, res) => {
     tableData: outcomesTableData,
     tableRows
   })
+})
+
+router.get('/outcomes-html-copy', (req, res) => {
+  res.render('outcomes/html-copy.html')
+})
+
+router.get('/outcomes-html-copy/raw', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../content/static/index.html'))
+})
+
+router.get('/outcomes-html-copy/style.css', (req, res) => {
+  res.type('text/css')
+  res.sendFile(path.resolve(__dirname, '../content/static/style.css'))
 })

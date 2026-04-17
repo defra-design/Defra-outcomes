@@ -1,0 +1,51 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Outcomes framework - HTML copy view" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Defra Outcomes Framework: HTML copy view</h1>
+
+    <div class="defra-html-copy-frame-wrap">
+      <iframe
+        id="html-copy-frame"
+        class="defra-html-copy-frame"
+        src="/outcomes-html-copy/raw"
+        title="Defra Outcomes Framework HTML copy"
+        scrolling="no"
+      ></iframe>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+  (function () {
+    const frame = document.getElementById('html-copy-frame')
+    if (!frame) return
+
+    function resizeFrame() {
+      try {
+        const doc = frame.contentDocument || frame.contentWindow.document
+        if (!doc) return
+        const nextHeight = Math.max(
+          doc.body ? doc.body.scrollHeight : 0,
+          doc.documentElement ? doc.documentElement.scrollHeight : 0
+        )
+        if (nextHeight > 0) frame.style.height = nextHeight + 'px'
+      } catch (e) {
+        // Same-origin only; fail silently if unavailable.
+      }
+    }
+
+    frame.addEventListener('load', function () {
+      resizeFrame()
+      setTimeout(resizeFrame, 100)
+    })
+
+    window.addEventListener('resize', resizeFrame)
+  })()
+</script>
+{% endblock %}
